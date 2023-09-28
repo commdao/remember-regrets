@@ -1,0 +1,236 @@
+.desktop-container {
+    width: 100; /* Adjust the width as needed */
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+}
+
+body, h1, ul {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    position: fixed;
+    top: 3.75rem;
+    rotate: 5deg;
+    height: 200px;
+    width: 200px;
+    transition: transform 0.3s;
+    border-radius: 50%;
+}
+
+img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+img:active {
+    transform: scale(1);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #5C338E;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #5C338E;
+    padding: 10px 0;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.container {
+    width: 300px;
+    margin: 0;
+    padding: 8px 20px;
+    background-color: #fffffff2;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+textArea {
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+select, textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#entry-type {
+    margin: 10px;
+    vertical-align: middle;
+}
+
+option, select {
+    color:#5C338E;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+button {
+    display: block;
+    background-color: #471A80;
+    color: #fff;
+    border: none;
+    font-weight: bolder;
+    font-size: 1rem;
+    text-transform: uppercase;
+    padding: 12px 22px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #6d2ac5;
+}
+
+#past-text-next, #save-entry {
+    margin-left: 8rem;
+}
+
+ul {
+    list-style-type: none;
+    margin-top: 20px;
+}
+
+li {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    color: #471A80;
+    font-weight: bold;
+}
+
+strong {
+    font-weight: bolder;
+}
+
+em {
+    font-style: italic;
+    color: white;
+    background-color: #5C338E;
+}
+
+#journal-placeholder {
+    visibility: hidden;
+}
+
+#journal-entries {
+    position: absolute;
+    bottom: 10rem;
+    width: 375px;
+    height: 80px;
+}
+
+#journal-entries h2 {
+    color: white;
+}
+
+#journal-entries button {
+    margin: .5rem;
+    color: white;
+    padding: 10px 20px;
+}
+
+#entry-details {
+    color: white;
+}
+
+.fire {
+    font-size: 24px;
+    filter: blur(0);
+    -webkit-filter: blur(0);
+    margin: 3em auto 0 auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    overflow: hidden;
+    z-index: -2;
+}
+
+.particle {
+    animation: rise 1.15s ease-in infinite;
+    background-image: radial-gradient(rgb(82, 165, 237) 20%, rgba(255, 80, 0, 0) 70%);
+    border-radius: 50%;
+    mix-blend-mode: screen;
+    opacity: 0;
+    position: absolute;
+    bottom: 0;
+    width: 7em;
+    height: 7em;
+}
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(0) scale(1.15);
+    }
+    25% {
+        opacity: .5;
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-12em) scale(0);
+    }
+}
+
+#subtitles {
+    height: 30px;
+    width: 100%;
+    background-color: white;
+    color: #5C338E;
+    font-size: 16px;
+    font-weight: bold;
+    padding: .5rem .75rem .25rem 3rem;
+    position: fixed;
+    top: 0;
+    z-index: -1;
+}
+
+.mute, .fa-volume-high {
+    cursor: pointer; /* Change the cursor to a pointer on hover */
+    right: 0;
+    position: absolute;
+    z-index: 1;
+}
+
+.fa-solid {
+    color: #471A80;
+    margin: 1rem .25rem;
+}
+
+.fa-solid:hover {
+    color: #5C338E;
+    cursor: pointer;
+}
