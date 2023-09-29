@@ -24,7 +24,7 @@ h1, h2 {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    /*overflow: hidden; need to go back and figure out what's extending width, probably the fire fx*/
+    overflow-x: hidden; /*caused by fire width?*/
 }
 
 #subtitles {
