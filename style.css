@@ -3,6 +3,20 @@ body, h1, ul {
     padding: 0;
 }
 
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #522c80;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #5C338E;
+    padding: 10px 0;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+
 .desktop-container {
     width: 100%;
     height: 90vh;
@@ -10,15 +24,15 @@ body, h1, ul {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    overflow: hidden; /*need to go back and figure out what's extending width, probably the fire fx*/
+    /*overflow: hidden; need to go back and figure out what's extending width, probably the fire fx*/
 }
 
 #subtitles {
-    height: 30px;
+    height: 2rem;
     width: 100%;
     background-color: white;
     color: #5C338E;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: bold;
     padding: .5rem .75rem .25rem 3rem;
     top: 0;
@@ -41,7 +55,7 @@ body, h1, ul {
     z-index: 1;
 }
 
-.mute:hover {
+.mute:hover, .fa-volume-high:hover {
     color: white;
 }
 
@@ -63,22 +77,9 @@ img:active {
     transform: scale(1);
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #5C338E;
-}
-
-h1, h2 {
-    text-align: center;
-    color: #5C338E;
-    padding: 10px 0;
-    text-transform: uppercase;
-    margin: 0;
-}
-
 .container {
-    width: 300px;
-    margin-top: 3rem;
+    width: 20rem;
+    margin-top: 2rem;
     padding: 8px 20px;
     background-color: #fffffff2;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -170,19 +171,19 @@ em {
     background-color: #5C338E;
 }
 
-#journal-placeholder {
+/* #journal-placeholder {
     visibility: hidden;
-}
+} */
 
 #journal-entries {
-    width: auto;
-    height: 5rem;
+    width: 20rem;
+    height: 20rem;
     margin-top: 1rem;
 }
 
 #journal-entries h2 {
-    color: rgb(217, 217, 217);
-    filter: drop-shadow(1px 1px 1px black);
+    color: rgb(245, 235, 226);
+    filter: drop-shadow(2px 2px 2px black);
 }
 
 #journal-entries button {
@@ -192,8 +193,8 @@ em {
 }
 
 #entry-details {
-    color: white;
-    width: 22rem;
+    color: black;
+    width: 20rem;
 }
 
 .fire {

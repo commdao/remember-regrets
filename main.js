@@ -95,13 +95,14 @@ function displayEntriesFromLocalStorage() {
 function displayEntryDetails(entry) {
     const entryDetailsContainer = document.getElementById('entry-details');
 
-    if (entryDetailsVisible) {
-        entryDetailsContainer.style.display = 'none';    
+    // Toggle the visibility by checking the current style.display property
+    if (entryDetailsContainer.style.display === 'block') {
+        entryDetailsContainer.style.display = 'none';
     } else {
         entryDetailsContainer.style.display = 'block';
-        
+
         const formattedDate = new Date(entry.timestamp).toLocaleString();
-        
+
         const entryDetailsDiv = document.createElement('div');
 
         entryDetailsDiv.style.backgroundColor = '#ffffff';
@@ -117,25 +118,20 @@ function displayEntryDetails(entry) {
         minimizeButton.textContent = '-';
         minimizeButton.addEventListener('click', () => {
             entryDetailsContainer.style.display = 'none';
-            console.log('click is recognized');
-            // entryDetailsVisible = false;
         });
-        
+
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'X';
         deleteButton.addEventListener('click', () => deleteEntry(entry.timestamp));
-        
+
         entryDetailsDiv.appendChild(minimizeButton);
         entryDetailsDiv.appendChild(deleteButton);
-        
-        // entryDetailsContainer.innerHTML = '';
-        // entryDetailsContainer.appendChild(entryDetailsDiv);
-        const dateList = document.getElementById('entry-date-list');
-        dateList.insertBefore(entryDetailsDiv, dateList.firstChild);
-    }
 
-    entryDetailsVisible = !entryDetailsVisible;
+        entryDetailsContainer.innerHTML = '';
+        entryDetailsContainer.appendChild(entryDetailsDiv);
+    }
 }
+
 
 function playDeleteAudio() {
     const deleteAudio = new Audio('media/damn_straight.mp3');
