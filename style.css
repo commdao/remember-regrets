@@ -61,7 +61,7 @@ h1, h2 {
 
 img {
     margin-top: 2rem;
-    rotate: 5deg;
+    transform: rotate(5deg);
     height: 200px;
     width: 200px;
     transition: transform 0.3s;

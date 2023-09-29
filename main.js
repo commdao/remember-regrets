@@ -95,7 +95,6 @@ function displayEntriesFromLocalStorage() {
 function displayEntryDetails(entry) {
     const entryDetailsContainer = document.getElementById('entry-details');
 
-    // Toggle the visibility by checking the current style.display property
     if (entryDetailsContainer.style.display === 'block') {
         entryDetailsContainer.style.display = 'none';
     } else {
@@ -255,6 +254,7 @@ audioCaptions = {
 
 function playAudio(audioId) {
     const audio = document.getElementById(audioId);
+    audio.volume = .6;
     const subtitlesElement = document.getElementById('subtitles');
 
     if (currentAudio) {
