@@ -4,12 +4,13 @@ body, h1, ul {
 }
 
 .desktop-container {
-    width: 100%; /* Adjust the width as needed */
+    width: 100%;
     height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    overflow: hidden; /*need to go back and figure out what's extending width, probably the fire fx*/
 }
 
 #subtitles {
@@ -174,14 +175,14 @@ em {
 }
 
 #journal-entries {
-    position: absolute;
-    bottom: 10rem;
-    width: 375px;
-    height: 80px;
+    width: auto;
+    height: 5rem;
+    margin-top: 1rem;
 }
 
 #journal-entries h2 {
-    color: white;
+    color: rgb(217, 217, 217);
+    filter: drop-shadow(1px 1px 1px black);
 }
 
 #journal-entries button {
@@ -192,6 +193,7 @@ em {
 
 #entry-details {
     color: white;
+    width: 22rem;
 }
 
 .fire {
@@ -201,7 +203,7 @@ em {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     height: 100%;
     overflow: hidden;
     z-index: -2;
@@ -215,8 +217,8 @@ em {
     opacity: 0;
     position: absolute;
     bottom: 0;
-    width: 24em;
-    height: 28em;
+    width: 10em;
+    height: 18em;
 }
 
 @keyframes rise {
