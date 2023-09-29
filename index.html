@@ -11,65 +11,64 @@
 </head>
 <body>
     <div class="desktop-container">
-
-        <div class="container">
-            <!-- play memberin_time OR inquiry-->
-        <div id="welcome-screen">
-            <h2>Rememberin' Regrets</h2>
-            <audio src="media/actions_or_words.mp3" id="entry-type-audio"></audio>
-            <button id="start-button" onclick="playAudio('entry-type-audio')">Start</button>     
-        </div>
-        <div id="entry-type-prompt" style="display: none;">
-            <h2>Whaddaya regret?</h2>
-            <div class="row">
-                <select id="entry-type">
-                    <option value="Actions">ACTIONS</option>
-                    <option value="Words">WORDS</option>
-                </select>
-                <!-- when no regrets implemented, play damn_straight, right_on, or win-->
-                <audio src="media/change.mp3" id="change-past-audio"></audio>
-                <button id="entry-type-next" onclick="playAudio('change-past-audio')">Next</button>
-            </div>
-        </div>
-        <div id="change-past-prompt" style="display: none;">
-            <h2>What would you want to be different?</h2>
-            <textarea id="change-past-text" rows="4"></textarea>
-            <div class="row">
-                <i class="fa-solid fa-circle-chevron-left fa-lg" id="previous-button"></i>
-                <i class="fa-solid fa-circle-chevron-right fa-lg" id="next-button"></i>
-                <!-- play been_there OR for_real OR me_too-->
-                <audio src="media/been_there.mp3" id="changes-results-audio"></audio>
-                <button id="past-text-next" onclick="playAudio('changes-results-audio')">Next</button>
-            </div>
-        </div>
-        <div id="changes-results-prompt" style="display: none;">
-            <h2>If you changed things like that, then what?</h2>
-            <textarea id="changes-results-text" rows="4"></textarea>
-            <div class="row">
-                <i class="fa-solid fa-circle-chevron-left fa-lg" id="final-previous-button"></i>
-                <!--play makes_sense OR end-->
-                <audio src="media/end.mp3" id="save"></audio>
-                <button id="save-entry" onclick="playAudio('save')">Save</button> 
-            </div>
-        </div>
-    </div>
-    <div id="journal-placeholder"></div>
-    <div id="journal-entries">
-        <h2>Records</h2>
-        <ul id="entry-date-list"></ul>
-        <div id="entry-details" style="display: none;"></div>
-    </div>
-    
-    <div class="fire"></div>
-    
-    <audio src="media/wise_words.mp3" id="little-bit"></audio>
-    <img src="media/cowgirl.jpg" alt="cowgirl" onclick="playAudio('little-bit')">
-    
-    <audio src="media/Friends-in-Low-Places.mp3" autoplay loop volume = ".4" id="background-music"></audio>
-    <div id="subtitles">
+        <audio src="media/Friends-in-Low-Places.mp3" autoplay loop volume = ".4" id="background-music"></audio>
+        <i class="fa-solid fa-volume-xmark fa-lg mute"></i>
+        <div id="subtitles"></div>
         
-    </div>
-    <i class="fa-solid fa-volume-xmark fa-lg mute"></i>
+        <audio src="media/wise_words.mp3" id="little-bit"></audio>
+        <img src="media/cowgirl.jpg" alt="cowgirl" onclick="playAudio('little-bit')">
+        
+                
+        <div class="container">
+            
+            <!-- play memberin_time OR inquiry-->
+            <div id="welcome-screen">
+                <h2>Rememberin' Regrets</h2>
+                <audio src="media/actions_or_words.mp3" id="entry-type-audio"></audio>
+                <button id="start-button" onclick="playAudio('entry-type-audio')">Start</button>     
+            </div>
+            <div id="entry-type-prompt" style="display: none;">
+                <h2>Whaddaya regret?</h2>
+                <div class="row">
+                    <select id="entry-type">
+                        <option value="Actions">ACTIONS</option>
+                        <option value="Words">WORDS</option>
+                    </select>
+                    <!-- when no regrets implemented, play damn_straight, right_on, or win-->
+                    <audio src="media/change.mp3" id="change-past-audio"></audio>
+                    <button id="entry-type-next" onclick="playAudio('change-past-audio')">Next</button>
+                </div>
+            </div>
+            <div id="change-past-prompt" style="display: none;">
+                <h2>What would you want to be different?</h2>
+                <textarea id="change-past-text" rows="4"></textarea>
+                <div class="row">
+                    <i class="fa-solid fa-circle-chevron-left fa-lg" id="previous-button"></i>
+                    <i class="fa-solid fa-circle-chevron-right fa-lg" id="next-button"></i>
+                    <!-- play been_there OR for_real OR me_too-->
+                    <audio src="media/been_there.mp3" id="changes-results-audio"></audio>
+                    <button id="past-text-next" onclick="playAudio('changes-results-audio')">Next</button>
+                </div>
+            </div>
+            <div id="changes-results-prompt" style="display: none;">
+                <h2>If you changed things like that, then what?</h2>
+                <textarea id="changes-results-text" rows="4"></textarea>
+                <div class="row">
+                    <i class="fa-solid fa-circle-chevron-left fa-lg" id="final-previous-button"></i>
+                    <!--play makes_sense OR end-->
+                    <audio src="media/end.mp3" id="save"></audio>
+                    <button id="save-entry" onclick="playAudio('save')">Save</button> 
+                </div>
+            </div>
+        </div>
+        <div id="journal-placeholder"></div>
+        <div id="journal-entries">
+            <h2>Records</h2>
+            <ul id="entry-date-list"></ul>
+            <div id="entry-details" style="display: none;"></div>
+        </div>
+    
+        <div class="fire"></div>
     </div>
     <script src="main.js"></script>
 </body>
