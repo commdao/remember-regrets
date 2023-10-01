@@ -79,11 +79,19 @@ img:active {
 
 .container {
     width: 20rem;
+    height: 17rem;
     margin-top: 2rem;
     padding: 8px 20px;
     background-color: #fffffff2;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#start-button {
+    width: 18rem;
 }
 
 label {

@@ -15,6 +15,24 @@ let audioCaptions;
 let currentStep = 0;
 let currentAudio = null;
 
+const backgroundAudio = document.getElementById('background-music');
+backgroundAudio.volume = 0.3;
+
+const stopAudioIcon = document.querySelector('.fa-volume-high');
+function stopBackgroundAudio() {
+    if (backgroundAudio.muted) {
+        backgroundAudio.muted = false;
+        stopAudioIcon.classList.remove('fa-volume-xmark', 'fa-lg', 'mute');
+        stopAudioIcon.classList.add('fa-volume-high', 'fa-lg');
+    } else {
+        backgroundAudio.muted = true;
+        stopAudioIcon.classList.remove('fa-volume-high', 'fa-lg');
+        stopAudioIcon.classList.add('fa-volume-xmark', 'fa-lg', 'mute');
+    }
+}
+
+stopAudioIcon.addEventListener('click', stopBackgroundAudio);
+
 let userInput = {
     changePastText: '',
     changesResultsText: '',
@@ -114,13 +132,20 @@ function displayEntryDetails(entry) {
         `;
 
         const minimizeButton = document.createElement('button');
-        minimizeButton.textContent = '-';
+        minimizeButton.textContent = 'KEEP';
         minimizeButton.addEventListener('click', () => {
             entryDetailsContainer.style.display = 'none';
+
+            const keepAudio = new Audio('media/for_real.mp3');
+            keepAudio.volume = .4;
+            const subtitlesElement = document.getElementById('subtitles');
+
+            keepAudio.play();
+            subtitlesElement.textContent = 'What the shit-- for real?!';
         });
 
         const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'X';
+        deleteButton.textContent = 'YEET';
         deleteButton.addEventListener('click', () => deleteEntry(entry.timestamp));
 
         entryDetailsDiv.appendChild(minimizeButton);
@@ -133,11 +158,12 @@ function displayEntryDetails(entry) {
 
 
 function playDeleteAudio() {
-    const deleteAudio = new Audio('media/damn_straight.mp3');
+    const deleteAudio = new Audio('media/git_out.mp3');
+    deleteAudio.volume = .4;
     const subtitlesElement = document.getElementById('subtitles');
     
     deleteAudio.play();
-    subtitlesElement.textContent = 'Damn straight!';
+    subtitlesElement.textContent = 'Go on and git out!';
 }
 
 function deleteEntry(timestamp) {
@@ -254,7 +280,7 @@ audioCaptions = {
 
 function playAudio(audioId) {
     const audio = document.getElementById(audioId);
-    audio.volume = .6;
+    audio.volume = .4;
     const subtitlesElement = document.getElementById('subtitles');
 
     if (currentAudio) {
@@ -271,24 +297,6 @@ function playAudio(audioId) {
         currentAudio = audio;
     }
 }
-
-const backgroundAudio = document.getElementById('background-music');
-backgroundAudio.volume = 0.3;
-
-const stopAudioIcon = document.querySelector('.mute');
-function stopBackgroundAudio() {
-    if (backgroundAudio.muted) {
-        backgroundAudio.muted = false;
-        stopAudioIcon.classList.remove('fa-volume-xmark', 'fa-lg', 'mute');
-        stopAudioIcon.classList.add('fa-volume-high', 'fa-lg');
-    } else {
-        backgroundAudio.muted = true;
-        stopAudioIcon.classList.remove('fa-volume-high', 'fa-lg');
-        stopAudioIcon.classList.add('fa-volume-xmark', 'fa-lg', 'mute');
-    }
-}
-
-stopAudioIcon.addEventListener('click', stopBackgroundAudio);
 
 const fireElement = document.querySelector('.fire');
 
