@@ -9,7 +9,7 @@ const pastTextNextButton = document.getElementById('past-text-next');
 const changesResultsPrompt = document.getElementById('changes-results-prompt');
 const changesResultsText = document.getElementById('changes-results-text');
 const saveButton = document.getElementById('save-entry');
-const entryList = document.getElementById('entry-list');
+const entryList = document.getElementById('entry-date-list');
 
 let audioCaptions;
 let currentStep = 0;
@@ -18,20 +18,24 @@ let currentAudio = null;
 const backgroundAudio = document.getElementById('background-music');
 backgroundAudio.volume = 0.3;
 
-const stopAudioIcon = document.querySelector('.fa-volume-high');
-function stopBackgroundAudio() {
-    if (backgroundAudio.muted) {
-        backgroundAudio.muted = false;
-        stopAudioIcon.classList.remove('fa-volume-xmark', 'fa-lg', 'mute');
-        stopAudioIcon.classList.add('fa-volume-high', 'fa-lg');
-    } else {
-        backgroundAudio.muted = true;
-        stopAudioIcon.classList.remove('fa-volume-high', 'fa-lg');
-        stopAudioIcon.classList.add('fa-volume-xmark', 'fa-lg', 'mute');
-    }
-}
 
-stopAudioIcon.addEventListener('click', stopBackgroundAudio);
+document.addEventListener('DOMContentLoaded', function () {
+
+    const stopAudioIcon = document.querySelector('.fa-volume-high');
+    function stopBackgroundAudio() {
+        backgroundAudio.muted = !backgroundAudio.muted;
+        if (backgroundAudio.muted) {
+            stopAudioIcon.classList.remove('fa-volume-high', 'fa-lg');
+            stopAudioIcon.classList.add('fa-volume-xmark', 'fa-lg', 'mute');
+            
+        } else {
+            stopAudioIcon.classList.remove('fa-volume-xmark', 'fa-lg', 'mute');
+            stopAudioIcon.classList.add('fa-volume-high', 'fa-lg');
+        }
+    }
+    
+    stopAudioIcon.addEventListener('click', stopBackgroundAudio);
+});
 
 let userInput = {
     changePastText: '',
@@ -68,8 +72,10 @@ function createEntryElement(type, text, changes, timestamp) {
         const date = new Date(timestamp);
         const formattedDate = `${date.toLocaleDateString()} at ${date.toLocaleTimeString()}`;
         li.innerHTML = `
-            <strong>${type.toUpperCase()}:</strong> ${text}<br>
-            <strong>CHANGES:</strong> ${changes}<br>
+            <strong>${type.toUpperCase()}:</strong> <br> 
+            ${text}<br>
+            <strong>CHANGES:</strong> <br>
+            ${changes}<br>
             <strong>RECORDED:</strong> ${formattedDate}`;
         return li;
 }
@@ -110,8 +116,17 @@ function displayEntriesFromLocalStorage() {
     });
 }
 
+const entryDetailsContainer = document.getElementById('entry-details');
+const recordsHeader = document.querySelector('records-header');
+function hideRecordsHeader() {
+    if (entryDetailsContainer.children.length >= 1) {
+        recordsHeader.style.display = 'block';
+    } else {
+        recordsHeader.style.display = 'none';
+    }
+}
+
 function displayEntryDetails(entry) {
-    const entryDetailsContainer = document.getElementById('entry-details');
 
     if (entryDetailsContainer.style.display === 'block') {
         entryDetailsContainer.style.display = 'none';
@@ -126,8 +141,10 @@ function displayEntryDetails(entry) {
         entryDetailsDiv.style.padding = '10px';
 
         entryDetailsDiv.innerHTML = `
-        <strong>${entry.type.toUpperCase()}:</strong> ${entry.text}<br>
-        <strong>CHANGES:</strong> ${entry.changes}<br>
+        <strong>${entry.type.toUpperCase()}:</strong> <br>
+        ${entry.text}<br>
+        <strong>CHANGES:</strong> <br>
+        ${entry.changes}<br>
         <strong>RECORDED:</strong> ${formattedDate}
         `;
 
@@ -151,6 +168,16 @@ function displayEntryDetails(entry) {
         entryDetailsDiv.appendChild(minimizeButton);
         entryDetailsDiv.appendChild(deleteButton);
 
+        const buttonContainer = document.createElement('div');
+        buttonContainer.style.display = 'flex';
+        buttonContainer.style.justifyContent = 'space-evenly';
+        buttonContainer.style.marginTop = '.5rem';
+
+        buttonContainer.appendChild(deleteButton);
+        buttonContainer.appendChild(minimizeButton);
+
+        entryDetailsDiv.appendChild(buttonContainer);
+
         entryDetailsContainer.innerHTML = '';
         entryDetailsContainer.appendChild(entryDetailsDiv);
     }
@@ -172,17 +199,23 @@ function deleteEntry(timestamp) {
     const entryToDelete = entries.find((entry) => entry.timestamp === timestamp);
 
     if (entryToDelete) {
-        playDeleteAudio();
         
-        entries = entries.filter((entry) => entry.timestamp !== timestamp);
+        const confirmDelete = confirm('Ya ready to tell this regret to go on and git?!');
         
-        localStorage.setItem('journalEntries', JSON.stringify(entries));
-        
-        const entryDetailsContainer = document.getElementById('entry-details');
-        entryDetailsContainer.style.display = 'none';
-        entryDetailsContainer.innerHTML = '';
-        
-        displayEntriesFromLocalStorage();
+        if (confirmDelete) {
+
+            playDeleteAudio();
+            
+            entries = entries.filter((entry) => entry.timestamp !== timestamp);
+            
+            localStorage.setItem('journalEntries', JSON.stringify(entries));
+            
+            const entryDetailsContainer = document.getElementById('entry-details');
+            entryDetailsContainer.style.display = 'none';
+            entryDetailsContainer.innerHTML = '';
+            
+            displayEntriesFromLocalStorage();
+        } 
     }
 }
 

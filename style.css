@@ -223,20 +223,20 @@ em {
     background-image: radial-gradient(rgb(82, 165, 237) 20%, rgba(255, 80, 0, 0) 70%);
     border-radius: 50%;
     mix-blend-mode: screen;
-    opacity: 0;
+    opacity: 0.6;
     position: absolute;
     bottom: 0;
-    width: 10em;
-    height: 18em;
+    width: 8em;
+    height: 14em;
 }
 
 @keyframes rise {
     from {
-        opacity: 0;
+        opacity: 0.2;
         transform: translateY(0) scale(1.15);
     }
     25% {
-        opacity: .5;
+        opacity: .7;
     }
     to {
         opacity: 0;
