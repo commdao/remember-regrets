@@ -35,7 +35,7 @@ h1, h2 {
     font-size: 1rem;
     font-weight: bold;
     text-align: center;
-    padding: .5rem .75rem .25rem 3rem;
+    padding: .5rem .75rem .75rem 3rem;
     top: 0;
     z-index: -1;
 }
@@ -53,6 +53,7 @@ h1, h2 {
 .mute, .fa-volume-high {
     cursor: pointer;
     color: rgba(255, 255, 255, 0.853);
+    margin: 1.15rem;
     z-index: 1;
 }
 
@@ -70,7 +71,7 @@ img {
 }
 
 img:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
     cursor: pointer;
 }
 
@@ -120,6 +121,7 @@ select, textarea {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: .5rem;
 }
 
 #entry-type {
