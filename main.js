@@ -16,7 +16,7 @@ let currentStep = 0;
 let currentAudio = null;
 
 const backgroundAudio = document.getElementById('background-music');
-backgroundAudio.volume = 0.3;
+backgroundAudio.volume = 0.2;
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -341,4 +341,26 @@ for (let i = 0; i < parts; i++) {
     particleElement.style.animationDelay = `${1 * Math.random()}s`;
     particleElement.style.left = `calc((100% - 5em) * ${i / parts})`;
     fireElement.appendChild(particleElement);
+}
+
+entryTypeSelect.addEventListener('change', handleEntryType);
+
+function handleEntryType() {
+    const entryTypeSelect = document.getElementById('entry-type');
+    const selectedOption = entryTypeSelect.value;
+
+    if (selectedOption === 'Nothing') {
+        const winAudio = new Audio('media/win.mp3');
+        winAudio.volume = .4;
+        const subtitlesElement = document.getElementById('subtitles');
+        
+        winAudio.play();
+        subtitlesElement.textContent = "Hell fucking yeah! I'll drink to that.";
+        
+        currentStep = 0;
+        welcomeScreen.style.display = 'block';
+        entryTypePrompt.style.display = 'none';
+        changePastPrompt.style.display = 'none';
+        changesResultsPrompt.style.display = 'none';
+    }
 }
